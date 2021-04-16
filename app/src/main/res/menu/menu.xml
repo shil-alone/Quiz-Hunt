@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/home"/>
+
+    <item android:title="Rank"
+        android:id="@+id/rank"
+        android:icon="@drawable/trophy"/>
+
+    <item android:title="Wallet"
+        android:id="@+id/wallet"
+        android:icon="@drawable/wallet"/>
+
+    <item android:title="Profile"
+        android:id="@+id/profile"
+        android:icon="@drawable/user"/>
+</menu>
