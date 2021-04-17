@@ -11,6 +11,7 @@ android {
     }
 
     defaultConfig {
+        android.defaultConfig.vectorDrawables.useSupportLibrary = true
         applicationId "com.codershil.quizhunt"
         minSdkVersion 16
         targetSdkVersion 29

@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizHunt"
         android:usesCleartextTraffic="true">
-        <activity android:name=".QuizActivity"></activity>
+        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".QuizActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
