@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "309400187151",
+    "project_id": "quiz-hunt-91248",
+    "storage_bucket": "quiz-hunt-91248.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309400187151:android:9459364ffd706a1f1d4e7a",
+        "android_client_info": {
+          "package_name": "com.codershil.quizhunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309400187151-177mpl02or4nsv7po5qbb0s3khb89nn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDpZUl22JaS1QRwOZTUF5e00Qt7OA2tC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309400187151-177mpl02or4nsv7po5qbb0s3khb89nn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
