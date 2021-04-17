@@ -3,5 +3,6 @@
   <component name="RenderSettings">
     <option name="quality" value="0.5" />
     <option name="showDecorations" value="true" />
+    <option name="useLiveRendering" value="false" />
   </component>
 </project>
