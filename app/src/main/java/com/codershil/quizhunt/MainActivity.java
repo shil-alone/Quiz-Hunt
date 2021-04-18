@@ -1,6 +1,7 @@
 package com.codershil.quizhunt;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -10,12 +11,20 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.codershil.quizhunt.databinding.ActivityMainBinding;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding ;
+    FirebaseFirestore database ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,15 +33,26 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        ArrayList<CategoryModel> categories = new ArrayList<>();
-        categories.add(new CategoryModel("","mathematics","https://i.pinimg.com/originals/dd/37/03/dd3703c08a47b6b6ad238ebd5ea5e303.png"));
-        categories.add(new CategoryModel("","science","https://i.pinimg.com/originals/dd/37/03/dd3703c08a47b6b6ad238ebd5ea5e303.png"));
-        categories.add(new CategoryModel("","history","https://i.pinimg.com/originals/dd/37/03/dd3703c08a47b6b6ad238ebd5ea5e303.png"));
-        categories.add(new CategoryModel("","Language","https://i.pinimg.com/originals/dd/37/03/dd3703c08a47b6b6ad238ebd5ea5e303.png"));
-        categories.add(new CategoryModel("","Puzzle","https://i.pinimg.com/originals/dd/37/03/dd3703c08a47b6b6ad238ebd5ea5e303.png"));
-        categories.add(new CategoryModel("","Drama","https://i.pinimg.com/originals/dd/37/03/dd3703c08a47b6b6ad238ebd5ea5e303.png"));
+        database = FirebaseFirestore.getInstance();
 
+        ArrayList<CategoryModel> categories = new ArrayList<>();
         CategoryAdapter adapter = new CategoryAdapter(this,categories);
+
+        database.collection("categories")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        categories.clear();
+                        for (DocumentSnapshot snapshot : value.getDocuments()){
+                            CategoryModel model = snapshot.toObject(CategoryModel.class);
+                            model.setCategoryId(snapshot.getId());
+                            categories.add(model);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
+
         binding.categoryList.setLayoutManager(new GridLayoutManager(this,2));
         binding.categoryList.setAdapter(adapter);
     }

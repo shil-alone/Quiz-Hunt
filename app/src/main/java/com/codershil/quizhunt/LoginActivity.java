@@ -32,6 +32,11 @@ public class LoginActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setMessage("logging in...");
 
+        if (auth.getCurrentUser() != null){
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
