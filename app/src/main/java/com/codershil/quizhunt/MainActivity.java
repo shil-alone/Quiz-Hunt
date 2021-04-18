@@ -1,9 +1,8 @@
 package com.codershil.quizhunt;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,18 +10,12 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.codershil.quizhunt.databinding.ActivityMainBinding;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
+import me.ibrahimsn.lib.OnItemSelectedListener;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding ;
-    FirebaseFirestore database ;
 
 
     @Override
@@ -30,31 +23,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.toolbar);
 
-        database = FirebaseFirestore.getInstance();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.layoutContent,new HomeFragment());
+        transaction.commit();
 
-        ArrayList<CategoryModel> categories = new ArrayList<>();
-        CategoryAdapter adapter = new CategoryAdapter(this,categories);
-
-        database.collection("categories")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        categories.clear();
-                        for (DocumentSnapshot snapshot : value.getDocuments()){
-                            CategoryModel model = snapshot.toObject(CategoryModel.class);
-                            model.setCategoryId(snapshot.getId());
-                            categories.add(model);
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
-                });
-
-
-        binding.categoryList.setLayoutManager(new GridLayoutManager(this,2));
-        binding.categoryList.setAdapter(adapter);
+        binding.bottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public boolean onItemSelect(int i) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                switch (i){
+                    case 0:
+                        transaction.replace(R.id.layoutContent,new HomeFragment());
+                        transaction.commit();
+                        break;
+                    case 1:
+                        transaction.replace(R.id.layoutContent,new LeaderBoardFragment());
+                        transaction.commit();                        break;
+                    case 2:
+                        transaction.replace(R.id.layoutContent,new WalletFragment());
+                        transaction.commit();                        break;
+                    case 3:
+                        transaction.replace(R.id.layoutContent,new ProfileFragment());
+                        transaction.commit();                        break;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

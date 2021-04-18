@@ -1,6 +1,7 @@
 package com.codershil.quizhunt;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         CategoryModel model = mCategoryModels.get(position);
         holder.categoryName.setText(model.getCategoryName());
         Glide.with(mContext).load(model.getCategoryImage()).into(holder.categoryImage);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,QuizActivity.class);
+                intent.putExtra("catId",model.getCategoryId());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
