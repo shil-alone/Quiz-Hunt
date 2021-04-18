@@ -45,6 +45,19 @@ public class SignUpActivity extends AppCompatActivity {
                 name = binding.nameBox.getText().toString();
                 referCode = binding.nameBox.getText().toString();
 
+                if (name.isEmpty()){
+                    binding.nameBox.setError("please enter name");
+                }
+
+                if (email.isEmpty()){
+                    binding.emailBox.setError("please enter email");
+                    return;
+                }
+                if (pass.isEmpty()){
+                    binding.passwordBox.setError("please enter password");
+                    return;
+                }
+
                 final User user = new User(name ,email,pass,referCode);
 
                 dialog.show();

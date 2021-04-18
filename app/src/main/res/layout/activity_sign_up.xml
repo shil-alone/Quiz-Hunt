@@ -95,7 +95,7 @@
                 android:drawableTint="@color/colorPurple"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="numberPassword"
+                android:inputType="textPassword"
                 android:padding="15dp" />
 
             <EditText
@@ -108,7 +108,7 @@
                 android:drawablePadding="15dp"
                 android:drawableTint="@color/colorPurple"
                 android:ems="10"
-                android:hint="Referrel Code"
+                android:hint="Referrel Code ( optional )"
                 android:inputType="textPersonName"
                 android:padding="15dp" />
 

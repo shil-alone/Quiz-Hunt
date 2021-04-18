@@ -76,7 +76,7 @@
                 android:drawableTint="@color/colorPurple"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="numberPassword"
+                android:inputType="textPassword"
                 android:padding="15dp" />
 
             <TextView
