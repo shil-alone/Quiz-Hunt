@@ -68,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             dialog.dismiss();
                             String uid = task.getResult().getUser().getUid();
-                            database.collection("users:")
+                            database.collection("users")
                                     .document(uid)
                                     .set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
