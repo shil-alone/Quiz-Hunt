@@ -85,6 +85,14 @@ public class QuizActivity extends AppCompatActivity {
                 });
 
         resetTimer();
+
+
+        binding.btnNextQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNextButtonClicked();
+            }
+        });
     }
 
     void setNextQuestion(){
@@ -167,20 +175,21 @@ public class QuizActivity extends AppCompatActivity {
                 checkAnswer(selected);
                 break;
 
-            case R.id.btnNextQuestion:
-                if (index<=questions.size()) {
-                    index++;
-                    setNextQuestion();
-                    resetBackground();
-                }
-                else {
-                    Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
-                    intent.putExtra("correct",correctAnswers);
-                    intent.putExtra("total",questions.size());
-                    startActivity(intent);
-                    Toast.makeText(this, "Quiz Finished", Toast.LENGTH_SHORT).show();
-                }
-                break;
+        }
+    }
+
+    public void onNextButtonClicked(){
+        if (index<=questions.size()) {
+            index++;
+            setNextQuestion();
+            resetBackground();
+        }
+        else {
+            Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
+            intent.putExtra("correct",correctAnswers);
+            intent.putExtra("total",questions.size());
+            startActivity(intent);
+            Toast.makeText(this, "Quiz Finished", Toast.LENGTH_SHORT).show();
         }
     }
 
