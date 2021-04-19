@@ -2,6 +2,7 @@ package com.codershil.quizhunt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -17,12 +18,15 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class QuizActivity extends AppCompatActivity {
 
     ActivityQuizBinding binding ;
     Question question;
     CountDownTimer timer ;
     FirebaseFirestore database;
+
+    int correctAnswers = 0 ;
 
     ArrayList<Question> questions = new ArrayList<>();
     int index = 0 ;
@@ -102,6 +106,7 @@ public class QuizActivity extends AppCompatActivity {
     public void checkAnswer(TextView textView){
         String selectedAnswer = textView.getText().toString();
         if (selectedAnswer.equals(question.getAnswer())){
+            correctAnswers++;
             textView.setBackground(getResources().getDrawable(R.drawable.option_right));
         }
         else{
@@ -163,12 +168,16 @@ public class QuizActivity extends AppCompatActivity {
                 break;
 
             case R.id.btnNextQuestion:
-                if (index<questions.size()) {
+                if (index<=questions.size()) {
                     index++;
                     setNextQuestion();
                     resetBackground();
                 }
                 else {
+                    Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
+                    intent.putExtra("correct",correctAnswers);
+                    intent.putExtra("total",questions.size());
+                    startActivity(intent);
                     Toast.makeText(this, "Quiz Finished", Toast.LENGTH_SHORT).show();
                 }
                 break;
