@@ -12,21 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizHunt"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".ResultActivity" />
         <activity android:name=".QuizActivity" />
-        <activity android:name=".SignUpActivity" >
-
-        </activity>
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

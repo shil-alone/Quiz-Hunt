@@ -54,4 +54,5 @@ public class User {
     public void setCoins(long coins) {
         this.coins = coins;
     }
+
 }
