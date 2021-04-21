@@ -1,7 +1,7 @@
 package com.codershil.quizhunt;
 
 public class CategoryModel {
-    private String categoryId ,categoryName, categoryImage ;
+    private String categoryId ,categoryName, categoryImage , noOfQuestions ;
 
     public CategoryModel(String categoryId, String categoryName, String categoryImage) {
         this.categoryId = categoryId;
@@ -33,5 +33,13 @@ public class CategoryModel {
 
     public void setCategoryImage(String categoryImage) {
         this.categoryImage = categoryImage;
+    }
+
+    public String getNoOfQuestions() {
+        return noOfQuestions;
+    }
+
+    public void setNoOfQuestions(String noOfQuestions) {
+        this.noOfQuestions = noOfQuestions;
     }
 }
