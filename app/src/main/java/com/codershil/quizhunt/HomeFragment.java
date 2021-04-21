@@ -58,7 +58,6 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-
         binding.categoryList.setLayoutManager(new GridLayoutManager(getContext(),2));
         binding.categoryList.setAdapter(adapter);
 
