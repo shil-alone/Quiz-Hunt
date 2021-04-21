@@ -1,21 +1,28 @@
 package com.codershil.quizhunt;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codershil.quizhunt.databinding.ActivityQuizBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -27,9 +34,13 @@ public class QuizActivity extends AppCompatActivity {
     FirebaseFirestore database;
 
     int correctAnswers = 0 ;
-
+    String catId ;
+    String noOfQuestions ;
     ArrayList<Question> questions = new ArrayList<>();
+    int randomNumber ;
     int index = 0 ;
+    boolean canAnswer = true ;
+    ProgressDialog progressDialog ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +49,32 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         database = FirebaseFirestore.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("loading questions...");
+        progressDialog.setCancelable(false);
 
-        String catId = getIntent().getStringExtra("catId");
+        catId = getIntent().getStringExtra("catId");
+        noOfQuestions = getIntent().getStringExtra("noOfQuestions");
 
         Random random = new Random();
-        int rand = random.nextInt(10);
+        randomNumber = random.nextInt(Integer.parseInt(noOfQuestions));
+        loadQuestions();
+        resetTimer();
 
+        binding.btnNextQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNextButtonClicked();
+            }
+        });
+    }
+
+    public void loadQuestions(){
+        progressDialog.show();
         database.collection("categories")
                 .document(catId)
                 .collection("questions")
-                .whereGreaterThanOrEqualTo("index",rand).orderBy("index")
+                .whereGreaterThanOrEqualTo("index",randomNumber).orderBy("index")
                 .limit(5)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -58,7 +85,7 @@ public class QuizActivity extends AppCompatActivity {
                             database.collection("categories")
                                     .document(catId)
                                     .collection("questions")
-                                    .whereLessThanOrEqualTo("index",rand).orderBy("index")
+                                    .whereLessThanOrEqualTo("index", randomNumber).orderBy("index")
                                     .limit(5)
                                     .get()
                                     .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -68,10 +95,11 @@ public class QuizActivity extends AppCompatActivity {
                                                 Question question = snapshot.toObject(Question.class);
                                                 questions.add(question);
                                             }
+                                            Collections.shuffle(questions);
                                             setNextQuestion();
+                                            progressDialog.dismiss();
                                         }
                                     });
-
 
                         }
                         else {
@@ -79,21 +107,21 @@ public class QuizActivity extends AppCompatActivity {
                                 Question question = snapshot.toObject(Question.class);
                                 questions.add(question);
                             }
+                            Collections.shuffle(questions);
+                            progressDialog.dismiss();
                             setNextQuestion();
                         }
                     }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(QuizActivity.this, "Failed To Load Questions Try Restarting App !", Toast.LENGTH_SHORT).show();
+                    }
                 });
-
-        resetTimer();
-
-
-        binding.btnNextQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onNextButtonClicked();
-            }
-        });
     }
+
 
     void setNextQuestion(){
         if (timer != null){
@@ -140,7 +168,7 @@ public class QuizActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                onNextButtonClicked();
             }
         };
     }
@@ -161,25 +189,30 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    public void onButtonClick(View view){
+    public void onOptionClicked(View view){
         switch (view.getId()){
-
             case R.id.txtOption1:
             case R.id.txtOption2:
             case R.id.txtOption3:
             case R.id.txtOption4:
-                if (timer != null){
-                    timer.cancel();
+                if (canAnswer) {
+                    if (timer != null) {
+                        timer.cancel();
+                    }
+                    TextView selected = (TextView) view;
+                    checkAnswer(selected);
+                    canAnswer = false;
+                    break;
                 }
-                TextView selected = (TextView) view ;
-                checkAnswer(selected);
-                break;
-
+                else{
+                    Toast.makeText(QuizActivity.this, "You Already Answered !", Toast.LENGTH_SHORT).show();
+                }
         }
     }
 
     public void onNextButtonClicked(){
-        if (index<=questions.size()) {
+        canAnswer = true ;
+        if (index<questions.size()-1) {
             index++;
             setNextQuestion();
             resetBackground();
