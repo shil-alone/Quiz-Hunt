@@ -67,6 +67,13 @@ public class QuizActivity extends AppCompatActivity {
                 onNextButtonClicked();
             }
         });
+        binding.btnQuit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(QuizActivity.this,MainActivity.class));
+                finish();
+            }
+        });
     }
 
     public void loadQuestions(){
@@ -223,6 +230,7 @@ public class QuizActivity extends AppCompatActivity {
             intent.putExtra("total",questions.size());
             startActivity(intent);
             Toast.makeText(this, "Quiz Finished", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
