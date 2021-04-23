@@ -58,6 +58,7 @@ public class WalletFragment extends Fragment {
                     String paypalEmail = binding.edtPaypalEmail.getText().toString();
                     if (paypalEmail.isEmpty()){
                         binding.edtPaypalEmail.setError("please enter email first");
+                        return;
                     }
                     WithdrawRequest request = new WithdrawRequest(uid,paypalEmail,user.getName());
                     
