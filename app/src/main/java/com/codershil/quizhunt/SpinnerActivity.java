@@ -23,6 +23,7 @@ import java.util.Random;
 public class SpinnerActivity extends AppCompatActivity {
 
     ActivitySpinnerBinding binding;
+    long coin = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,10 +96,9 @@ public class SpinnerActivity extends AppCompatActivity {
     }
 
     public void updateCoins(int index){
-        long coin = 0;
         switch (index){
             case 0:
-                coin = 0;
+                coin = 5;
                 break;
             case 1:
                 coin = 10;
@@ -123,7 +123,7 @@ public class SpinnerActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(SpinnerActivity.this, "Coins added in account", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SpinnerActivity.this, coin +" Coins Added In Wallet", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });
