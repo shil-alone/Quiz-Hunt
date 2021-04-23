@@ -12,18 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizHunt"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SpinnerActivity"></activity>
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".QuizActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".SpinnerActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ResultActivity" android:screenOrientation="portrait" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".QuizActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SignUpActivity" android:screenOrientation="portrait"/>
+
+
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+
+
+        <activity android:name=".MainActivity" android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
