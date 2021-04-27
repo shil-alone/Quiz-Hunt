@@ -7,7 +7,7 @@
 
     <item android:title="Rank"
         android:id="@+id/rank"
-        android:icon="@drawable/trophy"/>
+        android:icon="@drawable/trophy_nav"/>
 
     <item android:title="Wallet"
         android:id="@+id/wallet"
