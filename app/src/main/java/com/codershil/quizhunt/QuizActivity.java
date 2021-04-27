@@ -25,6 +25,7 @@ import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
 
+
     ActivityQuizBinding binding ;
     Question question;
     CountDownTimer timer ;
@@ -126,7 +127,6 @@ public class QuizActivity extends AppCompatActivity {
                 });
     }
 
-
     void setNextQuestion(){
         if (timer != null){
             timer.cancel();
@@ -172,6 +172,7 @@ public class QuizActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                timer.cancel();
                 onNextButtonClicked();
             }
         };
@@ -215,11 +216,13 @@ public class QuizActivity extends AppCompatActivity {
     public void onNextButtonClicked(){
         canAnswer = true ;
         if (index<questions.size()-1) {
+            timer.start();
             index++;
             setNextQuestion();
             resetBackground();
         }
         else {
+            timer.cancel();
             Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
             intent.putExtra("correct",correctAnswers);
             intent.putExtra("total",questions.size());
