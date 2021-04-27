@@ -83,7 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                            Toast.makeText(SignUpActivity.this, "success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                         }
 
                         else {
