@@ -9,23 +9,25 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineQuiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/quizmelogo" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="20dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/guidelineQuiz">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,7 +62,6 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
                 android:background="@drawable/textbox"
                 android:drawableLeft="@drawable/user"
                 android:drawablePadding="15dp"
@@ -68,13 +69,15 @@
                 android:ems="10"
                 android:hint="Full Name"
                 android:inputType="textPersonName"
-                android:padding="15dp" />
+                android:padding="13dp" />
 
             <EditText
                 android:id="@+id/emailBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/textbox"
                 android:drawableLeft="@drawable/email"
                 android:drawablePadding="15dp"
@@ -82,13 +85,15 @@
                 android:ems="10"
                 android:hint="Email Adress"
                 android:inputType="textEmailAddress"
-                android:padding="15dp" />
+                android:padding="13dp" />
 
             <EditText
                 android:id="@+id/passwordBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/textbox"
                 android:drawableLeft="@drawable/password"
                 android:drawablePadding="15dp"
@@ -96,13 +101,15 @@
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:padding="15dp" />
+                android:padding="13dp" />
 
             <EditText
                 android:id="@+id/referBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/textbox"
                 android:drawableLeft="@drawable/user"
                 android:drawablePadding="15dp"
@@ -110,7 +117,7 @@
                 android:ems="10"
                 android:hint="Referrel Code ( optional )"
                 android:inputType="textPersonName"
-                android:padding="15dp" />
+                android:padding="13dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSubmit"
@@ -149,4 +156,11 @@
                 android:textSize="10sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
 </androidx.constraintlayout.widget.ConstraintLayout>
