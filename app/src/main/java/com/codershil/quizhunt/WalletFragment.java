@@ -47,6 +47,7 @@ public class WalletFragment extends Fragment {
         binding = FragmentWalletBinding.inflate(inflater,container,false);
         dialog = new ProgressDialog(getContext());
         dialog.setMessage("sending withdraw request...");
+        dialog.setCancelable(false);
 
         database = FirebaseFirestore.getInstance();
         database.collection("users")
@@ -103,14 +104,13 @@ public class WalletFragment extends Fragment {
                     });
                 }
 
-
                 else{
+                    dialog.dismiss();
                     Toast.makeText(getContext(), "You Need More coins for withdrawal", Toast.LENGTH_SHORT).show();
                 }
                 
             }
         });
-
 
 
         return binding.getRoot();
