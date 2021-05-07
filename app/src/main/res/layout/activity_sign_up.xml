@@ -83,7 +83,7 @@
                 android:drawablePadding="15dp"
                 android:drawableTint="@color/colorPurple"
                 android:ems="10"
-                android:hint="Email Adress"
+                android:hint="Email Address"
                 android:inputType="textEmailAddress"
                 android:padding="13dp" />
 
@@ -146,7 +146,6 @@
                 android:textColor="@color/color_white" />
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
