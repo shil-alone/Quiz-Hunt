@@ -1,11 +1,11 @@
 package com.codershil.quizhunt;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.codershil.quizhunt.SpinWheel.LuckyWheelView;
 import com.codershil.quizhunt.SpinWheel.model.LuckyItem;
@@ -16,7 +16,6 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -36,7 +35,7 @@ public class SpinnerActivity extends AppCompatActivity {
         LuckyItem luckyItem1 = new LuckyItem();
         luckyItem1.topText = "5";
         luckyItem1.secondaryText = "Coins";
-        luckyItem1.color = Color.parseColor("#eceff1");
+        luckyItem1.color = Color.parseColor("#FF1B1C1C");
         luckyItem1.textColor = Color.parseColor("#ffffff");
         data.add(luckyItem1);
 
@@ -50,7 +49,7 @@ public class SpinnerActivity extends AppCompatActivity {
         LuckyItem luckyItem3 = new LuckyItem();
         luckyItem3.topText = "15";
         luckyItem3.secondaryText = "Coins";
-        luckyItem3.color = Color.parseColor("#eceff1");
+        luckyItem3.color = Color.parseColor("#FF1B1C1C");
         luckyItem3.textColor = Color.parseColor("#ffffff");
         data.add(luckyItem3);
 
@@ -64,7 +63,7 @@ public class SpinnerActivity extends AppCompatActivity {
         LuckyItem luckyItem5 = new LuckyItem();
         luckyItem5.topText = "25";
         luckyItem5.secondaryText = "Coins";
-        luckyItem5.color = Color.parseColor("#eceff1");
+        luckyItem5.color = Color.parseColor("#FF1B1C1C");
         luckyItem5.textColor = Color.parseColor("#ffffff");
         data.add(luckyItem5);
 
