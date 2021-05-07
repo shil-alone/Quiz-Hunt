@@ -2,14 +2,13 @@ package com.codershil.quizhunt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.codershil.quizhunt.databinding.FragmentHomeBinding;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -48,13 +47,13 @@ public class HomeFragment extends Fragment {
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        categories.clear();
-                        for (DocumentSnapshot snapshot : value.getDocuments()){
-                            CategoryModel model = snapshot.toObject(CategoryModel.class);
-                            model.setCategoryId(snapshot.getId());
-                            categories.add(model);
-                        }
-                        adapter.notifyDataSetChanged();
+                            categories.clear();
+                            for (DocumentSnapshot snapshot : value.getDocuments()) {
+                                CategoryModel model = snapshot.toObject(CategoryModel.class);
+                                model.setCategoryId(snapshot.getId());
+                                categories.add(model);
+                            }
+                            adapter.notifyDataSetChanged();
                     }
                 });
 
