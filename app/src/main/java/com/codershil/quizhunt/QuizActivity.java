@@ -1,8 +1,5 @@
 package com.codershil.quizhunt;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +7,10 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.codershil.quizhunt.databinding.ActivityQuizBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,7 +25,6 @@ import java.util.Random;
 
 
 public class QuizActivity extends AppCompatActivity {
-
 
     ActivityQuizBinding binding ;
     Question question;
@@ -147,20 +147,20 @@ public class QuizActivity extends AppCompatActivity {
         String selectedAnswer = textView.getText().toString();
         if (selectedAnswer.equals(question.getAnswer())){
             correctAnswers++;
-            textView.setBackground(getResources().getDrawable(R.drawable.option_right));
+            textView.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_right,null));
         }
         else{
-            textView.setBackground(getResources().getDrawable(R.drawable.option_wrong));
+            textView.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_wrong,null));
             showAnswer();
         }
         showAnswer();
     }
 
     public void resetBackground(){
-        binding.txtOption1.setBackground(getResources().getDrawable(R.drawable.option_unselected));
-        binding.txtOption2.setBackground(getResources().getDrawable(R.drawable.option_unselected));
-        binding.txtOption3.setBackground(getResources().getDrawable(R.drawable.option_unselected));
-        binding.txtOption4.setBackground(getResources().getDrawable(R.drawable.option_unselected));
+        binding.txtOption1.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_unselected,null));
+        binding.txtOption2.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_unselected,null));
+        binding.txtOption3.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_unselected,null));
+        binding.txtOption4.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_unselected,null));
     }
 
     void resetTimer(){
@@ -169,27 +169,26 @@ public class QuizActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 binding.txtTimer.setText(String.valueOf(millisUntilFinished/1000));
             }
-
             @Override
             public void onFinish() {
+                canAnswer = false ;
                 timer.cancel();
-                onNextButtonClicked();
             }
         };
     }
 
     public void showAnswer(){
         if (question.getAnswer().equals(binding.txtOption1.getText().toString())){
-            binding.txtOption1.setBackground(getResources().getDrawable(R.drawable.option_right));
+            binding.txtOption1.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_right,null));
         }
         else if (question.getAnswer().equals(binding.txtOption2.getText().toString())){
-            binding.txtOption2.setBackground(getResources().getDrawable(R.drawable.option_right));
+            binding.txtOption2.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_right,null));
         }
         else if (question.getAnswer().equals(binding.txtOption3.getText().toString())){
-            binding.txtOption3.setBackground(getResources().getDrawable(R.drawable.option_right));
+            binding.txtOption3.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_right,null));
         }
         else {
-            binding.txtOption4.setBackground(getResources().getDrawable(R.drawable.option_right));
+            binding.txtOption4.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_right,null));
         }
 
     }
@@ -209,7 +208,9 @@ public class QuizActivity extends AppCompatActivity {
                     canAnswer = false;
                     break;
                 }
-                
+                else{
+                    Toast.makeText(this, "time over! please click next", Toast.LENGTH_SHORT).show(); 
+                }
         }
     }
 
@@ -222,13 +223,16 @@ public class QuizActivity extends AppCompatActivity {
             resetBackground();
         }
         else {
+            binding.btnNextQuestion.setEnabled(false);
             timer.cancel();
+            Toast.makeText(this, "Quiz Finished", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
             intent.putExtra("correct",correctAnswers);
             intent.putExtra("total",questions.size());
-            startActivity(intent);
-            Toast.makeText(this, "Quiz Finished", Toast.LENGTH_SHORT).show();
+            intent.putExtra("catId",catId);
+            intent.putExtra("noOfQuestions",noOfQuestions);
             finish();
+            startActivity(intent);
         }
     }
 
