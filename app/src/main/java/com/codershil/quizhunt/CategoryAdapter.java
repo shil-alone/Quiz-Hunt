@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,10 +41,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,QuizActivity.class);
-                intent.putExtra("catId",model.getCategoryId());
-                intent.putExtra("noOfQuestions",model.getNoOfQuestions());
-                mContext.startActivity(intent);
+                if(model.getNoOfQuestions().equals("0")){
+                    Toast.makeText(mContext, "This category does not contain any questions yet", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                    Intent intent = new Intent(mContext, QuizActivity.class);
+                    intent.putExtra("catId", model.getCategoryId());
+                    intent.putExtra("noOfQuestions", model.getNoOfQuestions());
+                    mContext.startActivity(intent);
             }
         });
     }
