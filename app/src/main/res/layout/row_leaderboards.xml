@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#DCD9D9"
+    android:background="#F1EEEE"
     android:padding="5dp">
 
     <TextView
@@ -59,4 +59,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/txtLeaderName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtLeaderName" />
+
+    <View
+        android:id="@+id/view8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#222121"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLeader"
+        android:layout_marginTop="7dp"
+       />
 </androidx.constraintlayout.widget.ConstraintLayout>
