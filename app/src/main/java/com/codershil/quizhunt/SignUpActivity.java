@@ -75,15 +75,16 @@ public class SignUpActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         dialog.dismiss();
-                                        startActivity(new Intent(SignUpActivity.this,MainActivity.class));
                                         finish();
+                                        startActivity(new Intent(SignUpActivity.this,MainActivity.class));
+                                        Toast.makeText(SignUpActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                         Toast.makeText(SignUpActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
-                            Toast.makeText(SignUpActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
+
                         }
 
                         else {
