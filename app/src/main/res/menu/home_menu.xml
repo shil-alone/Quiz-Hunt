@@ -5,7 +5,7 @@
     <item
         app:showAsAction="always"
         android:id="@+id/wallet"
-        android:icon="@drawable/wallet_white"
+        android:icon="@drawable/ic_baseline_login_24"
         android:title="Wallet"
         android:iconTint="@color/white"/>
 </menu>
