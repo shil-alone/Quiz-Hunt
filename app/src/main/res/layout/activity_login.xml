@@ -64,7 +64,7 @@
                 android:drawablePadding="15dp"
                 android:drawableTint="@color/colorPurple"
                 android:ems="10"
-                android:hint="Email Adress"
+                android:hint="Email Address"
                 android:inputType="textEmailAddress"
                 android:padding="15dp" />
 
@@ -85,14 +85,18 @@
                 android:padding="15dp" />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
+                android:id="@+id/txtForgetPassword"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_marginBottom="10dp"
-                android:gravity="center|end"
+                android:background="@drawable/textbox"
+                android:padding="10dp"
                 android:text="Forget Password ?"
+                android:textColor="@color/colorPurple"
                 android:textSize="20sp" />
 
             <androidx.appcompat.widget.AppCompatButton
