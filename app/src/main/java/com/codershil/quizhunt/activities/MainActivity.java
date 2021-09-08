@@ -19,7 +19,7 @@ import com.codershil.quizhunt.fragments.HomeFragment;
 import com.codershil.quizhunt.fragments.LeaderBoardFragment;
 import com.codershil.quizhunt.fragments.ProfileFragment;
 import com.codershil.quizhunt.R;
-import com.codershil.quizhunt.models.WalletFragment;
+import com.codershil.quizhunt.fragments.WalletFragment;
 import com.codershil.quizhunt.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 

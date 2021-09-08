@@ -1,4 +1,4 @@
-package com.codershil.quizhunt.models;
+package com.codershil.quizhunt.fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.codershil.quizhunt.databinding.FragmentWalletBinding;
+import com.codershil.quizhunt.models.User;
+import com.codershil.quizhunt.models.WithdrawRequest;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
