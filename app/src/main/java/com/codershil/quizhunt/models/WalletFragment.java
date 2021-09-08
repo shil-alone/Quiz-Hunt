@@ -1,11 +1,10 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.models;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import android.view.LayoutInflater;
 import android.view.View;

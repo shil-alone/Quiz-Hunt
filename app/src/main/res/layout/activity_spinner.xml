@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_orang"
-    tools:context=".SpinnerActivity">
+    tools:context=".activities.SpinnerActivity">
 
     <ImageView
         android:id="@+id/imgTitle"

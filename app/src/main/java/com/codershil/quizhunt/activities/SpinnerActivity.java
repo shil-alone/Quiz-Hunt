@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;

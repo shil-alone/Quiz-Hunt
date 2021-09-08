@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

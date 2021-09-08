@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.codershil.quizhunt.models.CategoryModel;
+import com.codershil.quizhunt.activities.QuizActivity;
+import com.codershil.quizhunt.R;
 
 import java.util.ArrayList;
 

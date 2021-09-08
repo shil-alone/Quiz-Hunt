@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.fragments;
 
 import android.os.Bundle;
 
@@ -9,9 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.codershil.quizhunt.models.User;
+import com.codershil.quizhunt.adapters.LeaderBoardAdapter;
 import com.codershil.quizhunt.databinding.FragmentLeaderboardBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;

@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.models;
 
 public class Question {
     private String question,option1,option2,option3,option4, answer;

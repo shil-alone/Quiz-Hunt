@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,6 +15,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.codershil.quizhunt.fragments.HomeFragment;
+import com.codershil.quizhunt.fragments.LeaderBoardFragment;
+import com.codershil.quizhunt.fragments.ProfileFragment;
+import com.codershil.quizhunt.R;
+import com.codershil.quizhunt.models.WalletFragment;
 import com.codershil.quizhunt.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 

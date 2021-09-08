@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.models;
 
 import com.google.firebase.firestore.ServerTimestamp;
 

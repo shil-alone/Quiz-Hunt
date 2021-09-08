@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.codershil.quizhunt.R;
 import com.codershil.quizhunt.databinding.ActivityQuizBinding;
+import com.codershil.quizhunt.models.Question;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -147,7 +149,7 @@ public class QuizActivity extends AppCompatActivity {
         String selectedAnswer = textView.getText().toString();
         if (selectedAnswer.equals(question.getAnswer())){
             correctAnswers++;
-            textView.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_right,null));
+            textView.setBackground(ResourcesCompat.getDrawable(this.getResources(), R.drawable.option_right,null));
         }
         else{
             textView.setBackground(ResourcesCompat.getDrawable(this.getResources(),R.drawable.option_wrong,null));

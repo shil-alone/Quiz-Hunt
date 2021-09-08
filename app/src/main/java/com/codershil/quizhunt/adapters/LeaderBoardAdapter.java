@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.codershil.quizhunt.R;
+import com.codershil.quizhunt.models.User;
 import com.codershil.quizhunt.databinding.RowLeaderboardsBinding;
 
 import java.util.ArrayList;

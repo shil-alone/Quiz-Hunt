@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.models;
 
 public class User {
     private String name, email, pass, referCode = "0"  ;

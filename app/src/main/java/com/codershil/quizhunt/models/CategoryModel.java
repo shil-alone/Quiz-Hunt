@@ -1,4 +1,4 @@
-package com.codershil.quizhunt;
+package com.codershil.quizhunt.models;
 
 public class CategoryModel {
     private String categoryId ,categoryName, categoryImage , noOfQuestions ;
