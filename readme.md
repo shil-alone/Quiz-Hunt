@@ -12,6 +12,8 @@ Implemented Recycler View, Fragments , Menus , Spin Wheel
 and Activity Lifecycle Methods .
 
 ---
+### Screenshots
+
 
 <p float="center">
   <img src="https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/2_quiz.jpg" alt="Dashboard" width="216" height="492" />
@@ -32,7 +34,7 @@ and Activity Lifecycle Methods .
 </p>
 
 
-
+---
 
 ### System Requirements
 ** Android 4.4 and above
