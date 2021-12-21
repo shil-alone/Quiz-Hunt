@@ -13,10 +13,8 @@ and Activity Lifecycle Methods .
 
 ---
 
-![Dashboard](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/2_quiz.jpg) | ![Quiz](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/3_quiz.jpg) | ![Login](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/1_quiz.jpg)
-
-![Result](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/4_quiz.jpg) | ![Leaderboard](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/5_quiz.jpg) | ![Wallet](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/6_quiz.jpg)
-
+![Dashboard](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/2_quiz.jpg) | ![Quiz](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/3_quiz.jpg) | ![Login](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/1_quiz.jpg|
+![Result](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/4_quiz.jpg) | ![Leaderboard](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/5_quiz.jpg) | ![Wallet](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/6_quiz.jpg)|
 ![Profile](https://github.com/shil-alone/Quiz-Hunt/blob/master/screenshots/7_quiz.jpg)
 
 ### System Requirements
